@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>곽나경 디지털 명함</title>
+  <style>
+    :root {
+      --primary: #004aad;
+      --text: #ffffff;
+      --text-dark: #222222;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: var(--primary);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background-color: #fff;
+      color: var(--text-dark);
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .name {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .title {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info {
+      text-align: left;
+      margin-top: 1rem;
+    }
+
+    .contact-info a {
+      color: var(--primary);
+      text-decoration: none;
+      display: block;
+      margin: 0.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 480px) {
+      .card {
+        padding: 1.5rem;
+      }
+
+      .name {
+        font-size: 1.25rem;
+      }
+
+      .contact-info a {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="region" aria-label="곽나경 디지털 명함">
+    <img src="./envy.jpg" alt="곽나경 프로필 사진" class="profile-img" aria-hidden="true" />
+    <div class="name">곽나경</div>
+    <div class="title">CEO, 신한은행</div>
+    <div class="contact-info">
+      <a href="tel:01012345678" aria-label="전화 걸기 010-1234-5678">📞 010.1234.5678</a>
+      <a href="mailto:test@naver.com" aria-label="이메일 보내기">✉️ test@naver.com</a>
+      <a href="http://www.shinhan.com" target="_blank" rel="noopener" aria-label="웹사이트 방문">🌐 www.shinhan.com</a>
+      <a href="https://www.google.com/maps?q=서울시+중구+역덕동+123" target="_blank" rel="noopener" aria-label="지도 보기 서울시 중구 역덕동 123">📍 서울시 중구 역덕동 123</a>
+    </div>
+  </div>
+</body>
+</html>
