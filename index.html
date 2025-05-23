@@ -5,81 +5,253 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>곽나경 디지털 명함</title>
   <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
     :root {
-      --primary: #004aad;
-      --text: #ffffff;
-      --text-dark: #222222;
+      --primary: #2D3436;
+      --secondary: #636E72;
+      --accent: #00B894;
+      --text: #2D3436;
+      --text-light: #636E72;
+      --background: #F5F6FA;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: var(--primary);
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      background-color: var(--background);
       color: var(--text);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 20px;
+      animation: fadeIn 0.8s ease-out;
     }
 
     .card {
-      background-color: #fff;
-      color: var(--text-dark);
-      border-radius: 16px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
-      max-width: 400px;
-      width: 90%;
+      background-color: white;
+      color: var(--text);
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      padding: 3rem;
+      max-width: 420px;
+      width: 100%;
       text-align: center;
+      position: relative;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      animation: scaleIn 0.6s ease-out;
     }
 
     .profile-img {
-      width: 100px;
-      height: 100px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
+      border: none;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      animation: scaleIn 0.8s ease-out;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
     }
 
     .name {
-      font-size: 1.5rem;
-      font-weight: bold;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      animation: fadeIn 0.8s ease-out 0.2s both;
     }
 
     .title {
-      font-size: 1rem;
-      color: #666;
-      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      font-weight: 500;
+      animation: fadeIn 0.8s ease-out 0.4s both;
     }
 
     .contact-info {
       text-align: left;
-      margin-top: 1rem;
+      margin-top: 2rem;
+      display: grid;
+      gap: 8px;
     }
 
     .contact-info a {
-      color: var(--primary);
+      color: var(--text);
       text-decoration: none;
-      display: block;
-      margin: 0.5rem 0;
-      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      background-color: var(--background);
+      animation: slideIn 0.5s ease-out both;
     }
+
+    .contact-info a:nth-child(1) { animation-delay: 0.5s; }
+    .contact-info a:nth-child(2) { animation-delay: 0.6s; }
+    .contact-info a:nth-child(3) { animation-delay: 0.7s; }
+    .contact-info a:nth-child(4) { animation-delay: 0.8s; }
+    .contact-info a:nth-child(5) { animation-delay: 0.9s; }
 
     .contact-info a:hover {
-      text-decoration: underline;
+      background-color: var(--accent);
+      color: white;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 4px 12px rgba(0, 184, 148, 0.2);
     }
 
+    .contact-info a:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .contact-info a span {
+      margin-left: 12px;
+    }
+
+    /* 태블릿 */
+    @media screen and (max-width: 768px) {
+      .card {
+        padding: 2.5rem;
+        max-width: 380px;
+      }
+
+      .profile-img {
+        width: 130px;
+        height: 130px;
+      }
+
+      .name {
+        font-size: 1.9rem;
+      }
+    }
+
+    /* 모바일 */
     @media screen and (max-width: 480px) {
+      body {
+        padding: 16px;
+      }
+
+      .card {
+        padding: 2rem;
+        border-radius: 20px;
+      }
+
+      .profile-img {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 1.5rem;
+      }
+
+      .name {
+        font-size: 1.75rem;
+      }
+
+      .title {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-info {
+        margin-top: 1.5rem;
+        gap: 8px;
+      }
+
+      .contact-info a {
+        font-size: 0.95rem;
+        padding: 0.7rem 0.9rem;
+      }
+    }
+
+    /* 작은 모바일 */
+    @media screen and (max-width: 360px) {
       .card {
         padding: 1.5rem;
       }
 
+      .profile-img {
+        width: 100px;
+        height: 100px;
+      }
+
       .name {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
+      }
+
+      .contact-info {
+        gap: 8px;
       }
 
       .contact-info a {
         font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+      }
+    }
+
+    /* 다크 모드 */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary: #F5F6FA;
+        --secondary: #A4B0BE;
+        --accent: #00B894;
+        --text: #F5F6FA;
+        --text-light: #A4B0BE;
+        --background: #2D3436;
+      }
+
+      .card {
+        background-color: #1E272E;
+      }
+
+      .contact-info a {
+        background-color: #2D3436;
       }
     }
   </style>
@@ -90,10 +262,26 @@
     <div class="name">곽나경</div>
     <div class="title">CEO, 신한은행</div>
     <div class="contact-info">
-      <a href="tel:01012345678" aria-label="전화 걸기 010-1234-5678">📞 010.1234.5678</a>
-      <a href="mailto:test@naver.com" aria-label="이메일 보내기">✉️ test@naver.com</a>
-      <a href="http://www.shinhan.com" target="_blank" rel="noopener" aria-label="웹사이트 방문">🌐 www.shinhan.com</a>
-      <a href="https://www.google.com/maps?q=서울시+중구+역덕동+123" target="_blank" rel="noopener" aria-label="지도 보기 서울시 중구 역덕동 123">📍 서울시 중구 역덕동 123</a>
+      <a href="tel:01012345678" aria-label="전화 걸기 010-1234-5678">
+        <span>📞</span>
+        <span>010.1234.5678</span>
+      </a>
+      <a href="mailto:test@naver.com" aria-label="이메일 보내기">
+        <span>✉️</span>
+        <span>test@naver.com</span>
+      </a>
+      <a href="http://www.shinhan.com" target="_blank" rel="noopener" aria-label="웹사이트 방문">
+        <span>🌐</span>
+        <span>www.shinhan.com</span>
+      </a>
+      <a href="https://www.google.com/maps?q=서울시+중구+역덕동+123" target="_blank" rel="noopener" aria-label="지도 보기 서울시 중구 역덕동 123">
+        <span>📍</span>
+        <span>서울시 중구 역덕동 123</span>
+      </a>
+      <a href="https://www.instagram.com/nikki_chrs" target="_blank" rel="noopener" aria-label="인스타그램 방문">
+        <span>📸</span>
+        <span>@nikki_chrs</span>
+      </a>
     </div>
   </div>
 </body>
